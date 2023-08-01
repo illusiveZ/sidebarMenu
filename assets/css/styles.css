@@ -119,12 +119,28 @@ body {
   background: #31a4ff;
   z-index: 99;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menuToggle::before {
   content: "";
   position: absolute;
-  width: 20px;
+  width: 30px;
   height: 3px;
   background: #fff;
+  transform: translateY(-9px);
+  transition: 0.5s;
+  box-shadow: 0 9px 0 #fff;
+}
+
+.menuToggle::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  transform: translateY(9px);
+  transition: 0.5s;
 }
