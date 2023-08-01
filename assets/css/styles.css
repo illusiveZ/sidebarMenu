@@ -18,11 +18,16 @@ body {
 
 .sidebar {
   position: absolute;
-  width: 300px;
+  width: 80px;
   height: 100vh;
   background: #fff;
   transition: 0.5s;
   padding-left: 10px;
+  overflow: hidden;
+}
+
+.sidebar.active {
+  width: 300px;
 }
 
 .sidebar ul {
@@ -33,6 +38,35 @@ body {
 .sidebar ul li {
   position: relative;
   list-style: none;
+}
+
+.sidebar ul li.active {
+  background: var(--clr);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.sidebar ul li.active::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 5px 5px 0 5px var(--clr);
+  background: transparent;
+}
+.sidebar ul li.active::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 5px -5px 0 5px var(--clr);
+  background: transparent;
 }
 
 .sidebar ul li.logo {
@@ -63,6 +97,7 @@ body {
   justify-content: center;
   align-items: center;
   min-width: 60px;
+  padding-left: 10px;
   height: 70px;
   font-size: 1.5em;
   color: #333;
@@ -82,9 +117,30 @@ body {
   transition: 0.5s;
 }
 
+.sidebar ul li.active a .icon {
+  color: #fff;
+}
+.sidebar ul li.active a .text {
+  color: var(--bg);
+}
+
 .sidebar ul li:hover a .icon,
 .sidebar ul li:hover a .text {
   color: var(--bg);
+}
+
+.sidebar ul li.active a .icon::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  width: 60px;
+  background: var(--bg);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.sidebar ul li:hover.active a .icon::before {
+  background: #fff;
 }
 
 .bottom {
@@ -143,4 +199,13 @@ body {
   background: #fff;
   transform: translateY(9px);
   transition: 0.5s;
+}
+
+.menuToggle.active::before {
+  transform: translateY(0px) rotate(45deg);
+  box-shadow: 0 0 0 #fff;
+}
+
+.menuToggle.active::after {
+  transform: translateY(0px) rotate(-45deg);
 }
